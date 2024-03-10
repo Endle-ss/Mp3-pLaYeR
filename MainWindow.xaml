@@ -1,0 +1,30 @@
+﻿<Window x:Class="AudioPlayerApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Audio Player" MinWidth="400" MinHeight="300">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,5">
+                <Button x:Name="OpenFolderButton" Content="Открыть папку" Click="OpenFolderButton_Click"/>
+                <Button x:Name="PlayPauseButton" Content="Плей ор пауз" Click="PlayPauseButton_Click"/>
+                <Button x:Name="PreviousButton" Content="Назад" Click="PreviousButton_Click"/>
+                <Button x:Name="NextButton" Content="Далее" Click="NextButton_Click"/>
+                <Button x:Name="RepeatButton" Content="Повтор: нёу" Click="RepeatButton_Click"/>
+                <Button x:Name="ShuffleButton" Content="Перемешка: неа" Click="ShuffleButton_Click"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center">
+                <MediaElement x:Name="mediaElement" LoadedBehavior="Manual" MediaEnded="MediaElement_MediaEnded"
+                              MediaOpened="MediaElement_MediaOpened"/>
+                <Slider x:Name="positionSlider" Width="400" ValueChanged="PositionSlider_ValueChanged"/>
+                <Slider x:Name="volumeSlider" Width="200" ValueChanged="VolumeSlider_ValueChanged"/>
+                <TextBlock x:Name="durationTextBlock" Text="00:00" HorizontalAlignment="Center"/>
+            </StackPanel>
+            <ListBox x:Name="PlaylistListBox" Grid.Row="2" SelectionChanged="PlaylistListBox_SelectionChanged"/>
+        </Grid>
+    </Grid>
+</Window>
